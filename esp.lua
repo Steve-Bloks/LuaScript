@@ -70,12 +70,12 @@ function updateESP(player, esp)
         esp.name.Visible = visible
         esp.distance.Visible = visible
         if cframe and visible then
-            local sf = 1 / (depth * math.tan(math.rad(Camera.FieldOfView / 2)) * 2) * 1000
+            local sf = 1 / (depth * math.tan(math.rad(game.Workspace.Camera.FieldOfView / 2)) * 2) * 1000
             local w, h = round2(4 * sf, 5 * sf)
             local x, y = round2(position.X, position.Y)
             esp.box.Size = Vector2.new(w,h)
             esp.box.Position = Vector2.new(round2(x - w / 2, y - h / 2))
-            esp.box.Color = Players:FindFirstChild(player).TeamColor.Color or Color3.fromRGB(255,0,0)
+            esp.box.Color = game.Players:FindFirstChild(player).TeamColor.Color or Color3.new(1,1,1)
             esp.boxl.Size = esp.box.Size
             esp.boxl.Position = esp.box.Position
             local hum = char:FindFirstChildOfClass("Humanoid")
@@ -86,7 +86,7 @@ function updateESP(player, esp)
                 esp.healthbarl.Size = Vector2.new(4, h)
                 esp.healthbarl.Position = Vector2.new(round2(x - w / 2 - 8, y - h / 2))
             end
-            esp.name.Text = Players:FindFirstChild(player).DisplayName..` (@{Players:FindFirstChild(player).Name})`
+            esp.name.Text = game.Players:FindFirstChild(player).DisplayName..` (@{game.Players:FindFirstChild(player).Name})`
             esp.name.Position = Vector2.new(x, y - h / 2 - 24)
             esp.distance.Text = tostring(round2(depth)).." studs"
             esp.distance.Position = Vector2.new(x, y + h / 2 + 16)
