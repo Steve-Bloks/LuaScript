@@ -53,6 +53,11 @@ function removeESP(player)
     end
 end
 
+local function wtvp(...) 
+    local a, b = workspace.CurrentCamera.WorldToViewportPoint(workspace.CurrentCamera, ...)
+    return Vector2.new(a.X, a.Y), b, a.Z 
+end
+
 function updateESP(player, esp)
     local char = game.Players:FindFirstChild(player) and game.Players:FindFirstChild(player).Character
     if char then
