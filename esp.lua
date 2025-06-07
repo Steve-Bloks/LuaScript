@@ -58,6 +58,14 @@ local function wtvp(...)
     return Vector2.new(a.X, a.Y), b, a.Z 
 end
 
+function round(...)
+    local a = {}
+    for i,v in pairs(table.pack(...)) do
+        a[i] = math.round(v)
+    end 
+    return unpack(a)
+end
+
 function updateESP(player, esp)
     local char = game.Players:FindFirstChild(player) and game.Players:FindFirstChild(player).Character
     if char then
@@ -71,10 +79,10 @@ function updateESP(player, esp)
         esp.distance.Visible = visible
         if cframe and visible then
             local sf = 1 / (depth * math.tan(math.rad(workspace.CurrentCamera.FieldOfView / 2)) * 2) * 1000
-            local w, h = round2(4 * sf, 5 * sf)
-            local x, y = round2(position.X, position.Y)
+            local w, h = round(4 * sf, 5 * sf)
+            local x, y = round(position.X, position.Y)
             esp.box.Size = Vector2.new(w,h)
-            esp.box.Position = Vector2.new(round2(x - w / 2, y - h / 2))
+            esp.box.Position = Vector2.new(round(x - w / 2, y - h / 2))
             esp.box.Color = game.Players:FindFirstChild(player).TeamColor.Color or Color3.new(1,1,1)
             esp.boxl.Size = esp.box.Size
             esp.boxl.Position = esp.box.Position
@@ -82,13 +90,13 @@ function updateESP(player, esp)
             if hum then
                 local hp = hum.Health / hum.MaxHealth
                 esp.healthbar.Size = Vector2.new(2, h * hp)
-                esp.healthbar.Position = Vector2.new(round2(x - w / 2 - 8, y - h / 2 + h  * (1 - hp)))
+                esp.healthbar.Position = Vector2.new(round(x - w / 2 - 8, y - h / 2 + h  * (1 - hp)))
                 esp.healthbarl.Size = Vector2.new(4, h)
-                esp.healthbarl.Position = Vector2.new(round2(x - w / 2 - 8, y - h / 2))
+                esp.healthbarl.Position = Vector2.new(round(x - w / 2 - 8, y - h / 2))
             end
             esp.name.Text = game.Players:FindFirstChild(player).DisplayName..` (@{game.Players:FindFirstChild(player).Name})`
             esp.name.Position = Vector2.new(x, y - h / 2 - 24)
-            esp.distance.Text = tostring(round2(depth)).." studs"
+            esp.distance.Text = tostring(round(depth)).." studs"
             esp.distance.Position = Vector2.new(x, y + h / 2 + 16)
         end
     else
