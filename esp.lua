@@ -54,7 +54,7 @@ function removeESP(player)
 end
 
 function updateESP(player, esp)
-    local char = Players:FindFirstChild(player) and Players:FindFirstChild(player).Character
+    local char = game.Players:FindFirstChild(player) and game.Players:FindFirstChild(player).Character
     if char then
         local cframe = char:GetModelCFrame()
         local position, visible, depth = wtvp(cframe.Position)
