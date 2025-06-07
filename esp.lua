@@ -1,4 +1,4 @@
-local cachedESP = {}
+getgenv().cachedESP = {}
 function createESP(player)
     local espitems = {}
     if Drawing then
