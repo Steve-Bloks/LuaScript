@@ -70,7 +70,7 @@ function updateESP(player, esp)
         esp.name.Visible = visible
         esp.distance.Visible = visible
         if cframe and visible then
-            local sf = 1 / (depth * math.tan(math.rad(game.Workspace.Camera.FieldOfView / 2)) * 2) * 1000
+            local sf = 1 / (depth * math.tan(math.rad(workspace.CurrentCamera.FieldOfView / 2)) * 2) * 1000
             local w, h = round2(4 * sf, 5 * sf)
             local x, y = round2(position.X, position.Y)
             esp.box.Size = Vector2.new(w,h)
